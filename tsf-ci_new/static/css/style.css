@@ -1,0 +1,125 @@
+.clearout {
+    height: 20px;
+    clear: both;
+}
+a:hover{
+    text-decoration:none;
+}
+.side-menu-triangle{
+    position:absolute;
+    top:-2px;
+    right:-5px;
+    display:none;
+}
+#Side-menu-bar {
+    position: absolute;
+    height: 100%;
+    z-index: +2;
+}
+.sideMenuDiv {
+    padding-top: 24px;
+}
+.carousel-img {
+    width: 100%!important;
+    height: 430px!important;
+}
+.loading {
+    position: absolute;
+    top: 45%;
+    left: 45%;
+}
+.cursor-pointer {
+    cursor: pointer;
+}
+.content-container-admin {
+    position:relative;
+    padding: 4px 16px 0px 16px;
+    background-image:url(/static/img/escheresque.png);
+}
+.w3-responsive-sm {
+    /*max-height: 425px;*/
+}
+.w3-table-sm td {
+    padding-top: 4px !important;
+    padding-bottom: 4px !important;
+    vertical-align: middle;
+}
+@media (max-width:600px){
+    .side-menu-bar{
+        display: none;
+    }
+    .sideMenuDiv {
+        padding-top: 0;
+    }
+    .carousel-img {
+        width: 100%!important;
+        height: 300px!important;
+    }
+}
+.side-menu{
+    position:relative;
+    cursor:pointer;
+}
+.content-container{
+    display:none;
+}
+.overlay-container-left, .overlay-container-right {
+    position: absolute;
+    top: 0px;
+    height: 100%;
+    width: 0%;
+    transition: .5s ease;
+    z-index: +1;
+    background-color: rgba(0, 0, 0, 0.61)!important;
+    margin-top: 2px;
+}
+.overlay-container-left {
+    left: 0px;
+}
+.overlay-container-right {
+    right:0px;
+}
+.img-container{
+    position:relative;
+}
+.overlay-icon{
+    position:relative;
+    top:35%;
+    display:none;
+}
+.overlay-button{
+    position:relative;
+    top:35%;
+    display:none;
+    background:none;
+}
+.overlay-div{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+}
+.box-container:hover > .img-container > .overlay-container-left{
+    width:100%;
+    transition: .5s ease;
+}
+.box-container:hover > .img-container > .overlay-container-left > .overlay-icon{
+    display:block;
+}
+.box-container:hover > .img-container > .overlay-container-left > .overlay-button{
+    display:block;
+}
+.box-container:hover > .img-container > .overlay-container-right{
+    width:100%;
+    transition: .5s ease;
+}
+.box-container:hover > .img-container > .overlay-container-right > .overlay-icon{
+    display:block;
+}
+.box-container:hover > .img-container > .overlay-container-right > .overlay-button{
+    display:block;
+}
+.nowrap {
+    white-space: nowrap;
+}
