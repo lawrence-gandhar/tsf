@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
@@ -26,7 +26,7 @@ function check_logged_on(){
 
 function clean_input($data) {
     $data = trim($data);
-    $data = addslashes($data);
+    $data = stripslashes($data);
     $data = htmlspecialchars($data);
     return $data;
 }

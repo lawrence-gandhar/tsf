@@ -6,6 +6,7 @@ class Student extends CI_Controller {
 	public function __construct(){
 		parent::__construct(); 
 		 $this->load->model('student_model');
+		 $this->load->helper('user_question_helper');
 	}
 
 
@@ -16,6 +17,8 @@ class Student extends CI_Controller {
     public function index(){
         if(check_logged_on()){
         	$list['data'] = $this->student_model->get_quiz_list();
+			$loginid=$_SESSION['login_id'];
+			$list['useremail']=$loginid;
             $this->load->view('Student/index',$list);
         }
     }

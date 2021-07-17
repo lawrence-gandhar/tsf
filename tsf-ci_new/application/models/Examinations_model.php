@@ -1,4 +1,4 @@
-<?php
+<?php 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 
@@ -9,22 +9,22 @@ class Examinations_model extends CI_Model {
     //********************************************************************/
 // count(QS.id)
     public function get_examinations_list($_status = "", $_title = "", $_tag = ""){
-        $_sql = "select E.* from quiz E";
+        $_sql = "select E.*, (select count(t.id) from questions t where t.id=E.id)as counter from quiz E join questions QS on E.id = QS.eid group by E.id";
 
         $where = false;
 
-        if($_status != ""){
+        if($_status != ""){ 
             $_sql .= " where E.is_active = $_status ";
             $where = true;
         }
 
         if($_title != ""){
             if($where) $_sql .= " and E.title like '".$_title."%' ";
-            else{
+            else{ 
                 $_sql .= " where E.title like '".$_title."%' ";
                 $where = true;
             }
-        }
+        } 
 
         if($_tag != ""){
             if($where) $_sql .= " and E.tag like '".$_tag."%' ";
@@ -39,7 +39,7 @@ class Examinations_model extends CI_Model {
         //print $_sql;
 
         $_result = $this->db->query($_sql);
-        return $_result->result_array();
+        return $_result->result_array();    
     }
 
 
@@ -59,22 +59,22 @@ class Examinations_model extends CI_Model {
         return $_res->row();
     }
 
-
+    
     //********************************************************************/
     //  GET EXAMINATION - QUESTIONS
     //********************************************************************/
 
     public function get_examination_questions($_exam_id){
-        $_sql = "SELECT Q.id as ques_id, QI.id as image_id, Q.qns_title, QI.image_path, Q.eid FROM `questions` Q left join `question_images` QI
+        $_sql = "SELECT Q.id as ques_id, QI.id as image_id, Q.qns_title, QI.image_path, Q.eid FROM `questions` Q left join `question_images` QI 
         on Q.id = QI.qid where eid = $_exam_id";
         $_res = $this->db->query($_sql);
-        return $_res->result_array();
+        return $_res->result_array(); 
     }
 
     public function get_questions_options($_exam_id){
         $_sql = "select * from options where eid = $_exam_id";
         $_res = $this->db->query($_sql);
-        return $_res->result_array();
+        return $_res->result_array(); 
     }
 
     //********************************************************************/
@@ -84,22 +84,22 @@ class Examinations_model extends CI_Model {
     public function delete_option($option_id){
         $_sql = "delete from options where id = $option_id";
         if($this->db->query($_sql)) return true;
-        else return false;
+        else return false; 
     }
 
     public function delete_exam_options($exam_id){
         $_sql = "delete from options where eid = $exam_id";
         if($this->db->query($_sql)) return true;
-        else return false;
+        else return false; 
     }
 
     public function delete_ques_options($ques_id){
         $_sql = "delete from options where qid = $ques_id";
         if($this->db->query($_sql)) return true;
-        else return false;
+        else return false; 
     }
 
-
+    
 
 
 

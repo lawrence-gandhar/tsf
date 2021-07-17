@@ -21,17 +21,17 @@ $(document).ready(function(){
     //
     //
 
-    $(`#cord_reg_idBtn, #coord_name_idBtn, #coord_mobile_idBtn, #coord_email_idBtn,
-        #coord_age_idBtn, #coord_gender_idBtn, #coord_qual_idBtn, #coord_prof_idBtn, #coord_addr_idBtn,
+    $(`#cord_reg_idBtn, #coord_name_idBtn, #coord_mobile_idBtn, #coord_email_idBtn, 
+        #coord_age_idBtn, #coord_gender_idBtn, #coord_qual_idBtn, #coord_prof_idBtn, #coord_addr_idBtn, 
         #coord_district_idBtn, #coord_state_idBtn,#coord_pin_idBtn`).on("click", function(){
             get_coordinator_list();
         return false;
     });
 
 
-    $(`#coord__reg_idFilterForm, #coord_name_idFilterForm, #coord_mobile_idFilterForm, #coord_email_idFilterForm,
-        #coord_age_idFilterForm, #coord_gender_idFilterForm, #coord_qual_idFilterForm, #coord_prof_idFilterForm,
-        #coord_addr_idFilterForm, #coord_district_idFilterForm,
+    $(`#coord__reg_idFilterForm, #coord_name_idFilterForm, #coord_mobile_idFilterForm, #coord_email_idFilterForm, 
+        #coord_age_idFilterForm, #coord_gender_idFilterForm, #coord_qual_idFilterForm, #coord_prof_idFilterForm, 
+        #coord_addr_idFilterForm, #coord_district_idFilterForm, 
         #coord_state_idFilterForm,#coord_pin_idFilterForm`).on("submit", function() {
             get_coordinator_list();
         return false;
@@ -86,9 +86,6 @@ function get_coordinator_list() {
                         + "<td class=\"nowrap\">" + coordinator_list[i].city + "</td>"
                         + "<td class=\"nowrap\">" + coordinator_list[i].state + "</td>"
                         + "<td class=\"nowrap\">" + coordinator_list[i].pin + "</td>";
-                        
-                    coordinator_html += "<td class=\"nowrap\">" + coordinator_list[i].reg_on+ "</td>";
-
                     if(img_path == null || img_path == "") {
                         coordinator_html += "<td class=\"ignore-heading\"></td>";
                     } else {
@@ -96,7 +93,8 @@ function get_coordinator_list() {
                             + "<span onclick=\"show_image('" + img_path + "', '"
                             + name + "');\" role=\"button\">Show</span></td>";
                     }
-
+                    coordinator_html += "<td class=\"nowrap\">" + coordinator_list[i].reg_on
+                        + "</td>";
                         coordinator_html += "<td class=\"ignore-heading\"><button style=\"background-color:#384044 !important;\" type=\"button\" "
                             + "onclick=\"edit_student_record(" + coord_id + ");\" "
                             + "class=\"w3-btn w3-theme w3-round w3-tiny\" "
@@ -105,7 +103,7 @@ function get_coordinator_list() {
                             + "onclick=\"delete_coordinator_record(" + coord_id + ");\" "
                             + "class=\"w3-btn w3-theme w3-round w3-tiny\" "
                             + "><i class=\"fa fa-trash\"></i>  Delete</button></td></tr>";
-
+                    
                 }
                 $("#coordinator-body").html(coordinator_html);
                 bindTableExport($("#coordinator_table"), "Coordinator_List");
